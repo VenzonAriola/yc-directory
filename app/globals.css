@@ -51,7 +51,7 @@
         @apply font-normal text-sm text-white;
     }
     .tag{
-        @apply px-6 py-3 font-bold rounded-sm uppercase relative;
+        @apply bg-amber-400 px-6 py-3 font-bold rounded-sm uppercase relative;
     }
     .section_container {
         @apply px-6 py-10 max-w-7xl mx-auto;
@@ -159,11 +159,11 @@
     }
 
     .view-text {
-        @apply font-medium text-[16px] bg-black px-4 py-2 rounded-lg capitalize;
+        @apply font-medium text-[16px] bg-pink-200 px-4 py-2 rounded-lg capitalize;
     }
 
     .category-tag {
-        @apply font-medium text-[16px] bg-black px-4 py-2 rounded-full;
+        @apply font-medium text-[16px] bg-pink-200 px-4 py-2 rounded-full;
     }
 
 

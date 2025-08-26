@@ -1,7 +1,8 @@
 import Image from "next/image";
 import SearchForm from "@/components/SearchForm";
-import {SearchParams} from "next/dist/server/request/search-params";
-import StartupCard from "@/components/StartupCard";
+import StartupCard, {StartupCardType} from "@/components/StartupCard";
+import {STARTUPS_QUERY} from "@/sanity/lib/queries";
+import {sanityFetch, SanityLive} from "@/sanity/lib/live";
 
 
 /*searchParams props*/
@@ -10,20 +11,12 @@ export default async function Home({searchParams}:{
     })  {
 
     const query=(await searchParams).query;
-    const posts =[{
-        _createdAt:new Date(),
-        views:55,
-        author:{_id:1,name:'Vince'},
-        _id: 1,
-        description: 'This is the description',
-        image:'https://as1.ftcdn.net/v2/jpg/05/73/14/38/1000_F_573143889_NVvKlj8AGINKQyT7Pr3tkvCScXShff0F.jpg',
-        category: 'Robots',
-        title: 'We Robots'
+    const params ={search: query || null};
+    const {data : posts} = await sanityFetch({query: STARTUPS_QUERY, params}) ;
 
-    }]
-  return (
+      return (
     <>
-        <section className="pink_container">
+        <section className="pink_container pattern">
             <h1 className="heading">Pitch your startup, <br /> Connect with Entrepeneurs </h1>
 
             <p className="sub-heading !max-w-3xl">
@@ -43,7 +36,7 @@ export default async function Home({searchParams}:{
                 ):(<p className="no-results">No Startups found</p>)}
             </ul>
         </section>
-
+        <SanityLive />
     </>
   );
 }
